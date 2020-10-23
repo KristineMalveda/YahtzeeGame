@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class SampleController {
 	@FXML
 	private ImageView die1, die2, die3, die4, die5;
 
 	@FXML
-	private Label lblWarning;
-
+	private Label lblWarning, lblAces;
+	@FXML
+	private TextField acesPlayer1;
+	
 	@FXML
 	private Button spinBtn;
 
@@ -34,177 +39,90 @@ public class SampleController {
 
 	private ArrayList<ImageView> imgviewList = new ArrayList<>();
 	private ArrayList<Button> myButtons = new ArrayList<>();
+	private ArrayList<Integer> myDiceValue = new ArrayList<>();
 	int numOfSpin = 0;
 	int value = 0;
-
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
 		numOfSpin++;
-		event.consume();
-		System.out.println("Spin the dices");
-		System.out.println(numOfSpin);
 		spinTheDice.spinIt(numOfSpin, lblWarning, spinBtn);
 		chooseDice();
 	}
 
 	@FXML
-	private void handleButtonAction1(ActionEvent event) {
-		System.out.println(event.toString());
+	private void dice1ButtonEvent(ActionEvent event) {
 		myButtons = myButtons();
 		myButtons.get(0).setDisable(true);
-
+		Node node = myButtons.get(0).getGraphic();
+		ImageView img = (ImageView) node;
+		Image btnImage = img.getImage();
+		getDiceValue(btnImage);
 	}
 
 	@FXML
-	private void handleButtonAction2(ActionEvent event) {
-		System.out.println(event.toString());
+	private void dice2ButtonEvent(ActionEvent event) {
 		myButtons = myButtons();
 		myButtons.get(1).setDisable(true);
-	
+		Node node = myButtons.get(1).getGraphic();
+		ImageView img = (ImageView) node;
+		Image btnImage = img.getImage();
+		getDiceValue(btnImage);
 	}
 
 	@FXML
-	private void handleButtonAction3(ActionEvent event) {
-		System.out.println(event.toString());
+	private void dice3ButtonEvent(ActionEvent event) {
 		myButtons = myButtons();
 		myButtons.get(2).setDisable(true);
-
+		Node node = myButtons.get(2).getGraphic();
+		ImageView img = (ImageView) node;
+		Image btnImage = img.getImage();
+		getDiceValue(btnImage);
 	}
 
 	@FXML
-	private void handleButtonAction4(ActionEvent event) {
-		System.out.println(event.toString());
+	private void dice4ButtonEvent(ActionEvent event) {
 		imgviewList = updateDie();
 		myButtons = myButtons();
 		myButtons.get(3).setDisable(true);
-
+		Node node = myButtons.get(3).getGraphic();
+		ImageView img = (ImageView) node;
+		Image btnImage = img.getImage();
+		getDiceValue(btnImage);
 	}
 
 	@FXML
-	private void handleButtonAction5(ActionEvent event) {
-		System.out.println(event.toString());
-		imgviewList = updateDie();
+	private void dice5ButtonEvent(ActionEvent event) {
 		myButtons = myButtons();
 		myButtons.get(4).setDisable(true);
+		Node node = myButtons.get(4).getGraphic();
+		ImageView img = (ImageView) node;
+		Image btnImage = img.getImage();
+		getDiceValue(btnImage);
 	}
 
-	/*
-	 * @FXML private void dieButton1() { imgviewList = updateDie();
-	 * imgviewList.get(0).setDisable(true); imgviewList.get(0).setEffect(new
-	 * DropShadow());
-	 * 
-	 * }
-	 *//*
-		 * private void dieEvent() {
-		 * 
-		 * imgviewList = updateDie();
-		 * 
-		 * for ( iterator = 0; iterator < imgviewList.size() - 1; iterator++) {
-		 * System.out.println(iterator );
-		 * 
-		 * 
-		 * imgviewList.get(iterator).setOnMouseClicked((event) -> {
-		 * 
-		 * imgviewList.get(iterator).setDisable(true);
-		 * imgviewList.get(iterator).setEffect(new DropShadow());
-		 * System.out.println("I clicked this"+event.getTarget().toString());
-		 * 
-		 * for (int j = 0; j < imgviewList.size() - 1; j++) { if
-		 * (imgviewList.get(j).getImage() == gifs[0]) { value = 0 + 1; } else { value =
-		 * imgviewList.size() + 1; } DiceValue.setValue(value);
-		 * 
-		 * System.out.println(DiceValue.getValue()); }
-		 * 
-		 * 
-		 * });
-		 * 
-		 * imgviewList.get(i).setDisable(true); imgviewList.get(i).setEffect(new
-		 * DropShadow());
-		 * 
-		 * } }
-		 */
-
-//	@FXML
-//	private void die1Event(MouseEvent e) {
-//		e.consume();
-//		die1.setDisable(true);
-//		die1.setEffect(new DropShadow());
-//		
-//		imgviewList = updateDie();
-//
-//		for (int i = 0; i < imgviewList.size()-1; i++) {
-//			if (imgviewList.get(i).getImage() == gifs[i]) {
-//				value = i + 1;
-//			} else {
-//				value = imgviewList.size() + 1;
-//			}
-//
-//		}
-//
-//		DiceValue.setValue(value);
-//		System.out.println(DiceValue.getValue());
-//		System.out.println("clicked the first dice");
-//
-//	}
-//
-	/*
-	 * @FXML private void die2Event(MouseEvent e) { e.consume();
-	 * die2.setDisable(true); die2.setEffect(new DropShadow());
-	 * 
-	 * for (int i = 0; i < imgviewList.size() - 1; i++) { if
-	 * (imgviewList.get(i).getImage() == gifs[i]) { value = i + 1; } else { value =
-	 * imgviewList.size() + 1; }
-	 * 
-	 * } DiceValue.setValue(value); System.out.println(DiceValue.getValue());
-	 * System.out.println("clicked the Second dice");
-	 * 
-	 * }
-	 * 
-	 * @FXML private void die3Event(MouseEvent e) { e.consume();
-	 * die3.setDisable(true); die3.setEffect(new DropShadow()); for (int i = 0; i <
-	 * imgviewList.size() - 1; i++) { if (imgviewList.get(i).getImage() == gifs[i])
-	 * { value = i + 1; } else { value = imgviewList.size() + 1; }
-	 * 
-	 * } DiceValue.setValue(value); System.out.println(DiceValue.getValue());
-	 * System.out.println("clicked the Third dice");
-	 * 
-	 * }
-	 * 
-	 * @FXML private void die4Event(MouseEvent e) { e.consume();
-	 * die4.setDisable(true); die4.setEffect(new DropShadow()); for (int i = 0; i <
-	 * imgviewList.size() - 1; i++) { if (imgviewList.get(i).getImage() == gifs[i])
-	 * { value = i + 1; } else { value = imgviewList.size() + 1; }
-	 * 
-	 * } DiceValue.setValue(value); System.out.println(DiceValue.getValue());
-	 * System.out.println("clicked the Fourth dice");
-	 * 
-	 * }
-	 * 
-	 * @FXML private void die5Event(MouseEvent e) { e.consume();
-	 * die5.setDisable(true); die5.setEffect(new DropShadow()); for (int i = 0; i <
-	 * imgviewList.size() - 1; i++) { if (imgviewList.get(i).getImage() == gifs[i])
-	 * { value = i + 1; } else { value = imgviewList.size() + 1; }
-	 * 
-	 * } DiceValue.setValue(value); System.out.println(DiceValue.getValue());
-	 * System.out.println("clicked the Fifth dice"); }
-	 */
-
-	@FXML
-	private void chooseDice() {
-		myButtons = myButtons();
-		imgviewList = updateDie();
-		for (int i = 0; i < myButtons.size(); i++) {
-			if (!myButtons.get(i).isDisable()) {
-				Image img = gifs[spinTheDice.shuffleImages(gifs.length)];
-				ImageView imgview = new ImageView(img);
-				myButtons.get(i).setGraphic(imgview);
-				myButtons.get(i).setVisible(true);
-			} 
-		}
-
+	
+	@FXML 
+	private void lblAcesEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Aces(myDiceValue);
+	acesPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@FXML
 	private ArrayList<ImageView> updateDie() {
 		ArrayList<ImageView> list = imgviewList;
@@ -229,6 +147,34 @@ public class SampleController {
 
 	}
 
+	// Todo: transfer to another class
+	@FXML
+	private void chooseDice() {
+		myButtons = myButtons();
+		imgviewList = updateDie();
+		for (int i = 0; i < myButtons.size(); i++) {
+			if (!myButtons.get(i).isDisable()) {
+				Image img = gifs[spinTheDice.shuffleImages(gifs.length)];
+				ImageView imgview = new ImageView(img);
+				myButtons.get(i).setGraphic(imgview);
+				myButtons.get(i).setVisible(true);
+			}
+		}
+
+	}
+	
+	private void getDiceValue(Image buttonImg) {
+		for (int i = 0; i < gifs.length; i++) {
+			if (buttonImg == gifs[i]) {
+				value = i + 1;
+			
+			}
+		}
+		DiceValue.setValue(value);
+		myDiceValue.add(DiceValue.getValue());
+		System.out.println(value);
+	}
+	
 	
 
 }

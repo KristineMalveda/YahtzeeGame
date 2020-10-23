@@ -20,8 +20,7 @@ public class spinTheDice {
 			lblWarning.setText("Two spin left!");
 		} else if (numOfSpin == 2) {
 			lblWarning.setText("One spin left!");
-		} else {
-			
+		} else {		
 			lblWarning.setText("You must choose a category");
 			spinBtn.setDisable(true);					
 		}

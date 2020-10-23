@@ -29,11 +29,11 @@
                </textFill></Label>
             <Label id="lblPlayer2" layoutX="400.0" layoutY="107.0" text="Player 2" />
             <Label fx:id="lblWarning" layoutX="129.0" layoutY="140.0" />
-            <Button fx:id="btnDie1" layoutX="45.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction1" visible="false" />
-            <Button fx:id="btnDie2" layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction2" visible="false" />
-            <Button fx:id="btnDie3" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction3" visible="false" />
-            <Button fx:id="btnDie4" layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction4" visible="false" />
-            <Button fx:id="btnDie5" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction5" visible="false" />
+            <Button fx:id="btnDie1" layoutX="45.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice1ButtonEvent" visible="false" />
+            <Button fx:id="btnDie2" layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice2ButtonEvent" visible="false" />
+            <Button fx:id="btnDie3" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice3ButtonEvent" visible="false" />
+            <Button fx:id="btnDie4" layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice4ButtonEvent" visible="false" />
+            <Button fx:id="btnDie5" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice5ButtonEvent" visible="false" />
         
        
         
@@ -43,7 +43,7 @@
    <left>
       <Pane prefHeight="429.0" prefWidth="257.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="41.0" layoutY="27.0" text="ACES" textFill="#4f0606">
+            <Label fx:id="lblAces" layoutX="41.0" layoutY="27.0" onMouseClicked="#lblAcesEvent" text="ACES" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -68,12 +68,12 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="32.0" layoutY="255.0" text="TOTAL ">
+            <Label layoutX="37.0" layoutY="171.0" text="SIXES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="171.0" text="SIXES">
+            <Label layoutX="32.0" layoutY="255.0" text="TOTAL ">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -83,7 +83,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="91.0" layoutY="23.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="acesPlayer1" layoutX="91.0" layoutY="23.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="141.0" layoutY="23.0" prefHeight="22.0" prefWidth="44.0" />
             <TextField layoutX="91.0" layoutY="51.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="140.0" layoutY="51.0" prefHeight="22.0" prefWidth="44.0" />
