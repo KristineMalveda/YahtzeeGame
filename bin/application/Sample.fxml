@@ -48,27 +48,27 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="114.0" text="FOURS">
+            <Label layoutX="36.0" layoutY="114.0" onMouseClicked="#lblFoursEvent" text="FOURS">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="55.0" text="TWOS">
+            <Label layoutX="35.0" layoutY="55.0" onMouseClicked="#lblTwosEvent" text="TWOS">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="85.0" text="THREES">
+            <Label layoutX="34.0" layoutY="85.0" onMouseClicked="#lblThreesEvent" text="THREES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="143.0" text="FIVES">
+            <Label layoutX="40.0" layoutY="143.0" onMouseClicked="#lblFivesEvent" text="FIVES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="171.0" text="SIXES">
+            <Label layoutX="37.0" layoutY="171.0" onMouseClicked="#lblSixesEvent" text="SIXES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -85,15 +85,15 @@
             </Label>
             <TextField fx:id="acesPlayer1" layoutX="91.0" layoutY="23.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="141.0" layoutY="23.0" prefHeight="22.0" prefWidth="44.0" />
-            <TextField layoutX="91.0" layoutY="51.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="TwosPlayer1" layoutX="91.0" layoutY="51.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="140.0" layoutY="51.0" prefHeight="22.0" prefWidth="44.0" />
-            <TextField layoutX="91.0" layoutY="81.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="threesPlayer1" layoutX="91.0" layoutY="81.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="141.0" layoutY="80.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="91.0" layoutY="110.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="foursPlayer1" layoutX="91.0" layoutY="110.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="141.0" layoutY="139.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="142.0" layoutY="167.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="91.0" layoutY="139.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="91.0" layoutY="167.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="fivesPlayer1" layoutX="91.0" layoutY="139.0" prefHeight="13.0" prefWidth="43.0" />
+            <TextField fx:id="sixesPlayer1" layoutX="91.0" layoutY="167.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="141.0" layoutY="110.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="91.0" layoutY="210.0" prefHeight="13.0" prefWidth="43.0" />
             <TextField layoutX="142.0" layoutY="209.0" prefHeight="13.0" prefWidth="43.0" />

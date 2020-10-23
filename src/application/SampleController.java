@@ -17,9 +17,9 @@ public class SampleController {
 	private ImageView die1, die2, die3, die4, die5;
 
 	@FXML
-	private Label lblWarning, lblAces;
+	private Label lblWarning;
 	@FXML
-	private TextField acesPlayer1;
+	private TextField acesPlayer1,twosPlayer1,threesPlayer1,foursPlayer1,fivesPlayer1,sixesPlayer1;
 	
 	@FXML
 	private Button spinBtn;
@@ -105,23 +105,49 @@ public class SampleController {
 	@FXML 
 	private void lblAcesEvent(MouseEvent event) {
 		int showScore = UpperSectionLogic.Aces(myDiceValue);
-	acesPlayer1.setText(Integer.toString(showScore));
+		if(showScore == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+	    acesPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
+	}
+	
+	@FXML 
+	private void lblTwosEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Twos(myDiceValue);
+	    twosPlayer1.setText(Integer.toString(showScore));
 		System.out.println(myDiceValue);
 	}
 	
 	
+	@FXML 
+	private void lblThreesEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Threes(myDiceValue);
+	    threesPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
+	}
 	
 	
+	@FXML 
+	private void lblFoursEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Fours(myDiceValue);
+	    foursPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
+	}
+	@FXML 
+	private void lblFivesEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Fives(myDiceValue);
+	    fivesPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@FXML 
+	private void lblSixesEvent(MouseEvent event) {
+		int showScore = UpperSectionLogic.Sixes(myDiceValue);
+	    sixesPlayer1.setText(Integer.toString(showScore));
+		System.out.println(myDiceValue);
+	}
 	
 	@FXML
 	private ArrayList<ImageView> updateDie() {
@@ -172,7 +198,6 @@ public class SampleController {
 		}
 		DiceValue.setValue(value);
 		myDiceValue.add(DiceValue.getValue());
-		System.out.println(value);
 	}
 	
 	

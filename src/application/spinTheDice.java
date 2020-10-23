@@ -22,7 +22,7 @@ public class spinTheDice {
 			lblWarning.setText("One spin left!");
 		} else {		
 			lblWarning.setText("You must choose a category");
-			spinBtn.setDisable(true);					
+			//spinBtn.setDisable(true);					
 		}
 		
 	}
