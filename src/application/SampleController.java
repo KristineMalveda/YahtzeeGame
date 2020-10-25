@@ -17,10 +17,14 @@ public class SampleController {
 	private ImageView die1, die2, die3, die4, die5;
 
 	@FXML
-	private Label lblWarning;
+	private Label lblWarning, lblPlayer1, lblPlayer2, lblAces, lblTwos, lblThrees, lblFours, lblFives, lblSixes;
 	@FXML
-	private TextField acesPlayer1,twosPlayer1,threesPlayer1,foursPlayer1,fivesPlayer1,sixesPlayer1;
-	
+	private TextField acesPlayer1, twosPlayer1, threesPlayer1, foursPlayer1, fivesPlayer1, sixesPlayer1, player1Total,
+			bonusPlayer1;
+
+	@FXML
+	private TextField acesPlayer2, twosPlayer2, threesPlayer2, foursPlayer2, fivesPlayer2, sixesPlayer2, player2Total,
+			bonusPlayer2;
 	@FXML
 	private Button spinBtn;
 
@@ -39,25 +43,34 @@ public class SampleController {
 
 	private ArrayList<ImageView> imgviewList = new ArrayList<>();
 	private ArrayList<Button> myButtons = new ArrayList<>();
-	private ArrayList<Integer> myDiceValue = new ArrayList<>();
-	int numOfSpin = 0;
-	int value = 0;
+	private ArrayList<TextField> player1Fields = new ArrayList<>();
+	private ArrayList<TextField> player2Fields = new ArrayList<>();
+
+	private int activePlayer;
+
+	@FXML
+	public void initialize() {
+
+		hideButtons();
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+	}
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
-		numOfSpin++;
-		spinTheDice.spinIt(numOfSpin, lblWarning, spinBtn);
-		chooseDice();
+		myButtons = myButtons();
+		SpinTheDice.spinIt(lblWarning, spinBtn, myButtons, gifs);
 	}
 
 	@FXML
 	private void dice1ButtonEvent(ActionEvent event) {
 		myButtons = myButtons();
 		myButtons.get(0).setDisable(true);
+		// spinTheDice.clickableDiceButton(myButtons.get(0));
 		Node node = myButtons.get(0).getGraphic();
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
-		getDiceValue(btnImage);
+		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
 	}
 
 	@FXML
@@ -67,7 +80,8 @@ public class SampleController {
 		Node node = myButtons.get(1).getGraphic();
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
-		getDiceValue(btnImage);
+		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
+
 	}
 
 	@FXML
@@ -77,7 +91,8 @@ public class SampleController {
 		Node node = myButtons.get(2).getGraphic();
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
-		getDiceValue(btnImage);
+		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
+
 	}
 
 	@FXML
@@ -88,7 +103,8 @@ public class SampleController {
 		Node node = myButtons.get(3).getGraphic();
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
-		getDiceValue(btnImage);
+		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
+
 	}
 
 	@FXML
@@ -98,57 +114,197 @@ public class SampleController {
 		Node node = myButtons.get(4).getGraphic();
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
-		getDiceValue(btnImage);
+		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
+
 	}
 
-	
-	@FXML 
+	@FXML
 	private void lblAcesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Aces(myDiceValue);
-		if(showScore == 0) {
+
+		int showScore = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue2);
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+
+		if (showScore == 0 && showScore2 == 0) {
 			lblWarning.setText("Choose another Category!");
 			return;
 		}
-	    acesPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+
+		if (activePlayer == 1) {
+
+			if (acesPlayer1.getText().isBlank()) {
+				acesPlayer1.setText(Integer.toString(showScore));
+
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			} else {
+				System.out.println("Invalid");
+			}
+
+		}
+
+		if (activePlayer == 2) {
+
+			if (acesPlayer2.getText().isBlank()) {
+				acesPlayer2.setText(Integer.toString(showScore2));
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+
+			} else {
+				System.out.println("Invalid");
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
 	}
-	
-	@FXML 
+
+	@FXML
 	private void lblTwosEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Twos(myDiceValue);
-	    twosPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+		int showScore = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue2);
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+		if (activePlayer == 1) {
+			if (twosPlayer1.getText().isBlank()) {
+				twosPlayer1.setText(Integer.toString(showScore));
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (twosPlayer2.getText().isBlank()) {
+				twosPlayer2.setText(Integer.toString(showScore2));
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
 	}
-	
-	
-	@FXML 
+
+	@FXML
 	private void lblThreesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Threes(myDiceValue);
-	    threesPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+		int showScore = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue2);
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (threesPlayer1.getText().isBlank()) {
+				threesPlayer1.setText(Integer.toString(showScore));
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (threesPlayer2.getText().isBlank()) {
+				threesPlayer2.setText(Integer.toString(showScore2));
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
 	}
-	
-	
-	@FXML 
+
+	@FXML
 	private void lblFoursEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Fours(myDiceValue);
-	    foursPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+		int showScore = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue2);
+
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (foursPlayer1.getText().isBlank()) {
+				foursPlayer1.setText(Integer.toString(showScore));
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (foursPlayer2.getText().isBlank()) {
+				foursPlayer2.setText(Integer.toString(showScore2));
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
 	}
-	@FXML 
+
+	@FXML
 	private void lblFivesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Fives(myDiceValue);
-	    fivesPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+		int showScore = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue2);
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (fivesPlayer1.getText().isBlank()) {
+				fivesPlayer1.setText(Integer.toString(showScore));
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (fivesPlayer2.getText().isBlank()) {
+				fivesPlayer2.setText(Integer.toString(showScore2));
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
 	}
-	
-	@FXML 
+
+	@FXML
 	private void lblSixesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Sixes(myDiceValue);
-	    sixesPlayer1.setText(Integer.toString(showScore));
-		System.out.println(myDiceValue);
+		int showScore = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue);
+		int showScore2 = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue2);
+		hideButtons();
+		player1Fields = Player1Fields();
+		player2Fields = Player2Fields();
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (sixesPlayer1.getText().isBlank()) {
+				sixesPlayer1.setText(Integer.toString(showScore));
+				PlayersTotalScore.updatePlayer1Score(player1Fields, player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (sixesPlayer2.getText().isBlank()) {
+				sixesPlayer2.setText(Integer.toString(showScore2));
+
+				PlayersTotalScore.updatePlayer2Score(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
 	}
-	
+
 	@FXML
 	private ArrayList<ImageView> updateDie() {
 		ArrayList<ImageView> list = imgviewList;
@@ -170,36 +326,38 @@ public class SampleController {
 		buttonList.add(btnDie4);
 		buttonList.add(btnDie5);
 		return buttonList;
-
 	}
 
-	// Todo: transfer to another class
 	@FXML
-	private void chooseDice() {
-		myButtons = myButtons();
-		imgviewList = updateDie();
-		for (int i = 0; i < myButtons.size(); i++) {
-			if (!myButtons.get(i).isDisable()) {
-				Image img = gifs[spinTheDice.shuffleImages(gifs.length)];
-				ImageView imgview = new ImageView(img);
-				myButtons.get(i).setGraphic(imgview);
-				myButtons.get(i).setVisible(true);
-			}
-		}
+	private ArrayList<TextField> Player1Fields() {
+		ArrayList<TextField> player1FieldList = player1Fields;
+		player1FieldList.add(acesPlayer1);
+		player1FieldList.add(twosPlayer1);
+		player1FieldList.add(threesPlayer1);
+		player1FieldList.add(foursPlayer1);
+		player1FieldList.add(fivesPlayer1);
+		player1FieldList.add(sixesPlayer1);
+		return player1FieldList;
+	}
 
+	@FXML
+	private ArrayList<TextField> Player2Fields() {
+		ArrayList<TextField> player2FieldList = player2Fields;
+		player2FieldList.add(acesPlayer2);
+		player2FieldList.add(twosPlayer2);
+		player2FieldList.add(threesPlayer2);
+		player2FieldList.add(foursPlayer2);
+		player2FieldList.add(fivesPlayer2);
+		player2FieldList.add(sixesPlayer2);
+		return player2FieldList;
 	}
-	
-	private void getDiceValue(Image buttonImg) {
-		for (int i = 0; i < gifs.length; i++) {
-			if (buttonImg == gifs[i]) {
-				value = i + 1;
-			
-			}
+
+	@FXML
+	private void hideButtons() {
+		myButtons = myButtons();
+		for (int i = 0; i < myButtons.size(); i++) {
+			myButtons.get(i).setVisible(false);
 		}
-		DiceValue.setValue(value);
-		myDiceValue.add(DiceValue.getValue());
 	}
-	
-	
 
 }

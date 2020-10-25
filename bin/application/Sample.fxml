@@ -18,7 +18,7 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Label id="lblPlayer1" layoutX="61.0" layoutY="107.0" text="Player 1">
+            <Label id="lblPlayer1" fx:id="lblPlayer1" layoutX="61.0" layoutY="107.0" text="Player 1">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -27,13 +27,13 @@
                      </stops>
                   </LinearGradient>
                </textFill></Label>
-            <Label id="lblPlayer2" layoutX="400.0" layoutY="107.0" text="Player 2" />
+            <Label id="lblPlayer2" fx:id="lblPlayer2" layoutX="400.0" layoutY="107.0" text="Player 2" />
             <Label fx:id="lblWarning" layoutX="129.0" layoutY="140.0" />
-            <Button fx:id="btnDie1" layoutX="45.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice1ButtonEvent" visible="false" />
-            <Button fx:id="btnDie2" layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice2ButtonEvent" visible="false" />
-            <Button fx:id="btnDie3" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice3ButtonEvent" visible="false" />
-            <Button fx:id="btnDie4" layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice4ButtonEvent" visible="false" />
-            <Button fx:id="btnDie5" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice5ButtonEvent" visible="false" />
+            <Button fx:id="btnDie1" layoutX="45.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice1ButtonEvent" />
+            <Button fx:id="btnDie2" layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice2ButtonEvent" />
+            <Button fx:id="btnDie3" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice3ButtonEvent" />
+            <Button fx:id="btnDie4" layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice4ButtonEvent" />
+            <Button fx:id="btnDie5" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#dice5ButtonEvent" />
         
        
         
@@ -48,27 +48,27 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="114.0" onMouseClicked="#lblFoursEvent" text="FOURS">
+            <Label fx:id="lbltTwos" layoutX="35.0" layoutY="55.0" onMouseClicked="#lblTwosEvent" text="TWOS">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="55.0" onMouseClicked="#lblTwosEvent" text="TWOS">
+            <Label fx:id="lblFours" layoutX="36.0" layoutY="114.0" onMouseClicked="#lblFoursEvent" text="FOURS">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="85.0" onMouseClicked="#lblThreesEvent" text="THREES">
+            <Label fx:id="lblThrees" layoutX="34.0" layoutY="85.0" onMouseClicked="#lblThreesEvent" text="THREES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="143.0" onMouseClicked="#lblFivesEvent" text="FIVES">
+            <Label fx:id="lblFives" layoutX="40.0" layoutY="143.0" onMouseClicked="#lblFivesEvent" text="FIVES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="171.0" onMouseClicked="#lblSixesEvent" text="SIXES">
+            <Label fx:id="lblSixes" layoutX="37.0" layoutY="171.0" onMouseClicked="#lblSixesEvent" text="SIXES">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -83,27 +83,27 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="acesPlayer1" layoutX="91.0" layoutY="23.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="141.0" layoutY="23.0" prefHeight="22.0" prefWidth="44.0" />
-            <TextField fx:id="TwosPlayer1" layoutX="91.0" layoutY="51.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="140.0" layoutY="51.0" prefHeight="22.0" prefWidth="44.0" />
-            <TextField fx:id="threesPlayer1" layoutX="91.0" layoutY="81.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="141.0" layoutY="80.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField fx:id="foursPlayer1" layoutX="91.0" layoutY="110.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="141.0" layoutY="139.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="142.0" layoutY="167.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField fx:id="fivesPlayer1" layoutX="91.0" layoutY="139.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField fx:id="sixesPlayer1" layoutX="91.0" layoutY="167.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="141.0" layoutY="110.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="91.0" layoutY="210.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="142.0" layoutY="209.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="91.0" layoutY="251.0" prefHeight="13.0" prefWidth="43.0" />
-            <TextField layoutX="141.0" layoutY="251.0" prefHeight="13.0" prefWidth="43.0" />
             <Label layoutX="39.0" layoutY="-9.0" text="Upper Section" textFill="#050c58">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
+            <TextField fx:id="acesPlayer1" editable="false" layoutX="115.0" layoutY="23.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="acesPlayer2" editable="false" layoutX="168.0" layoutY="23.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="twosPlayer1" editable="false" layoutX="115.0" layoutY="51.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="twosPlayer2" editable="false" layoutX="168.0" layoutY="51.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="threesPlayer1" editable="false" layoutX="115.0" layoutY="81.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="threesPlayer2" editable="false" layoutX="168.0" layoutY="81.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="foursPlayer1" editable="false" layoutX="115.0" layoutY="110.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="foursPlayer2" editable="false" layoutX="168.0" layoutY="110.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="fivesPlayer1" editable="false" layoutX="115.0" layoutY="139.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="fivesPlayer2" editable="false" layoutX="168.0" layoutY="139.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="sixesPlayer1" editable="false" layoutX="115.0" layoutY="167.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="sixesPlayer2" editable="false" layoutX="168.0" layoutY="167.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="bonusPlayer1" editable="false" layoutX="115.0" layoutY="210.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="bonusPlayer2" editable="false" layoutX="168.0" layoutY="210.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="player1Total" editable="false" layoutX="115.0" layoutY="251.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="player2Total" editable="false" layoutX="168.0" layoutY="251.0" prefHeight="25.0" prefWidth="47.0" />
          </children>
       </Pane>
    </left>
