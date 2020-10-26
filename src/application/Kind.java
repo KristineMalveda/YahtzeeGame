@@ -8,7 +8,6 @@ public class Kind {
 	public static int treOfAKind(ArrayList<Integer> myDiceValue) {
 		ArrayList <Integer> dices = myDiceValue;
 		
-		System.out.println("Sorted  " + dices);
 		int sum = 0;
 
 		Boolean ThreeOfAKind = false;
@@ -27,7 +26,6 @@ public class Kind {
 		if (ThreeOfAKind) {
 			for (int k = 0; k < dices.size(); k++) {
 				sum  = dices.get(k)*3;
-				System.out.println("Sum " + sum);
 			}
 		}
 		

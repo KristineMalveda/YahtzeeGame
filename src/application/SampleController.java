@@ -343,13 +343,71 @@ public class SampleController {
 		if (activePlayer == 1) {
 			if (fourOfAKindPlayer1.getText().isBlank()) {
 				fourOfAKindPlayer1.setText(Integer.toString(showScore));
-				//UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields, player1Total);
+				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
+				// player1Total);
 			}
 		}
 		if (activePlayer == 2) {
 			if (fourOfAKindPlayer2.getText().isBlank()) {
 				fourOfAKindPlayer2.setText(Integer.toString(showScore2));
-				//UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
+				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
+	}
+
+	@FXML
+	private void lblFullHouseEvent(MouseEvent event) {
+		hideButtons();
+		System.out.println("I clicked FullHouse!");
+		int showScore = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue);
+		int showScore2 = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue2);
+
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (fullhousePlayer1.getText().isBlank()) {
+				fullhousePlayer1.setText(Integer.toString(showScore));
+				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
+				// player1Total);
+			}
+		}
+		if (activePlayer == 2) {
+			if (fullhousePlayer2.getText().isBlank()) {
+				fullhousePlayer2.setText(Integer.toString(showScore2));
+				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
+			}
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
+	}
+
+	@FXML
+	private void lblSMStraightEvent(MouseEvent event) {
+		hideButtons();
+		System.out.println("I clicked sm Straight!");
+		int showScore = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue);
+		int showScore2 = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue2);
+
+		if (showScore == 0 && showScore2 == 0) {
+			lblWarning.setText("Choose another Category!");
+			return;
+		}
+
+		if (activePlayer == 1) {
+			if (smStrPlayer1.getText().isBlank()) {
+				smStrPlayer1.setText(Integer.toString(showScore));
+			}
+		}
+		if (activePlayer == 2) {
+			if (smStrPlayer2.getText().isBlank()) {
+				smStrPlayer2.setText(Integer.toString(showScore2));
 			}
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,

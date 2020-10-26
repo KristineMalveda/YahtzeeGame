@@ -132,7 +132,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblFullHouse" layoutX="258.0" layoutY="117.0" onMouseClicked="#lblAcesEvent" text="FULLHOUSE" textFill="#4f0606">
+            <Label fx:id="lblFullHouse" layoutX="258.0" layoutY="117.0" onMouseClicked="#lblFullHouseEvent" text="FULLHOUSE" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
