@@ -13,7 +13,6 @@ public class GetTheDiceValue {
 		for (int i = 0; i < gifs.length; i++) {
 			if (buttonImg == gifs[i]) {
 				value = i + 1;
-
 			}
 		}
 		DiceValue.setValue(value);
