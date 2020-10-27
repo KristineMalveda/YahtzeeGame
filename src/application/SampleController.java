@@ -17,7 +17,7 @@ public class SampleController {
 	private ImageView die1, die2, die3, die4, die5;
 
 	@FXML
-	private Label lblWarning, lblPlayer1, lblPlayer2, lblAces, lblTwos, lblThrees, lblFours, lblFives, lblSixes;
+	private Label lblWarning, lblPlayer1, lblPlayer2, lblAces, lbltTwos, lblThrees, lblFours, lblFives, lblSixes;
 	@FXML
 	private TextField acesPlayer1, twosPlayer1, threesPlayer1, foursPlayer1, fivesPlayer1, sixesPlayer1, player1Total,
 			bonusPlayer1;
@@ -54,7 +54,6 @@ public class SampleController {
 
 	@FXML
 	public void initialize() {
-
 		hideButtons();
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -95,7 +94,6 @@ public class SampleController {
 		ImageView img = (ImageView) node;
 		Image btnImage = img.getImage();
 		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
-
 	}
 
 	@FXML
@@ -139,7 +137,8 @@ public class SampleController {
 
 				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
 			}
-
+			
+			GetTheDiceValue.myDiceValue.clear();
 		}
 
 		if (activePlayer == 2) {
@@ -147,7 +146,10 @@ public class SampleController {
 				acesPlayer2.setText(Integer.toString(showScore2));
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
+		
 		}
+		
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
 	}
@@ -169,12 +171,14 @@ public class SampleController {
 				twosPlayer1.setText(Integer.toString(showScore));
 				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (twosPlayer2.getText().isBlank()) {
 				twosPlayer2.setText(Integer.toString(showScore2));
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -198,12 +202,14 @@ public class SampleController {
 				threesPlayer1.setText(Integer.toString(showScore));
 				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (threesPlayer2.getText().isBlank()) {
 				threesPlayer2.setText(Integer.toString(showScore2));
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -228,12 +234,14 @@ public class SampleController {
 				foursPlayer1.setText(Integer.toString(showScore));
 				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (foursPlayer2.getText().isBlank()) {
 				foursPlayer2.setText(Integer.toString(showScore2));
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -255,14 +263,17 @@ public class SampleController {
 		if (activePlayer == 1) {
 			if (fivesPlayer1.getText().isBlank()) {
 				fivesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);	
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
+		
 		if (activePlayer == 2) {
 			if (fivesPlayer2.getText().isBlank()) {
 				fivesPlayer2.setText(Integer.toString(showScore2));
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -286,6 +297,7 @@ public class SampleController {
 				sixesPlayer1.setText(Integer.toString(showScore));
 				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (sixesPlayer2.getText().isBlank()) {
@@ -293,6 +305,7 @@ public class SampleController {
 
 				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -316,12 +329,14 @@ public class SampleController {
 				threeOfAKindPlayer1.setText(Integer.toString(showScore));
 				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1LowerFields,lowerTotalPLayer1);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (threeOfAKindPlayer2.getText().isBlank()) {
 				threeOfAKindPlayer2.setText(Integer.toString(showScore2));
 				// UpperLowerTotalScore.updatePlayer2LowerSectionScore(player2LowerFields,lowerTotalPlayer2);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -346,12 +361,14 @@ public class SampleController {
 				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
 				// player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
 			if (fourOfAKindPlayer2.getText().isBlank()) {
 				fourOfAKindPlayer2.setText(Integer.toString(showScore2));
 				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -361,27 +378,31 @@ public class SampleController {
 	@FXML
 	private void lblFullHouseEvent(MouseEvent event) {
 		hideButtons();
-		System.out.println("I clicked FullHouse!");
-		int showScore = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue);
-		int showScore2 = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue2);
-
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
 
 		if (activePlayer == 1) {
+			int showScore = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
 			if (fullhousePlayer1.getText().isBlank()) {
 				fullhousePlayer1.setText(Integer.toString(showScore));
 				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
 				// player1Total);
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
 			if (fullhousePlayer2.getText().isBlank()) {
 				fullhousePlayer2.setText(Integer.toString(showScore2));
 				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
@@ -391,30 +412,127 @@ public class SampleController {
 	@FXML
 	private void lblSMStraightEvent(MouseEvent event) {
 		hideButtons();
-		System.out.println("I clicked sm Straight!");
-		int showScore = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue);
-		int showScore2 = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue2);
-
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
+		System.out.println("I clicked sm straight");
 		if (activePlayer == 1) {
+			int showScore = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+
 			if (smStrPlayer1.getText().isBlank()) {
 				smStrPlayer1.setText(Integer.toString(showScore));
 			}
+			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = SmallStraight.smallStraight(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
 			if (smStrPlayer2.getText().isBlank()) {
 				smStrPlayer2.setText(Integer.toString(showScore2));
 			}
+			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
 
 	}
+	@FXML
+	private void lblLGStraightEvent(MouseEvent event) {
+		hideButtons();
+		System.out.println("I clicked large straight");
+		if (activePlayer == 1) {
+			int showScore = LargeStraight.largeStraight(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (lgStrPlayer1.getText().isBlank()) {
+				lgStrPlayer1.setText(Integer.toString(showScore));
+			}
+			GetTheDiceValue.myDiceValue.clear();
+		}
+		if (activePlayer == 2) {
+			int showScore2 = LargeStraight.largeStraight(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (lgStrPlayer2.getText().isBlank()) {
+				lgStrPlayer2.setText(Integer.toString(showScore2));
+			}
+			GetTheDiceValue.myDiceValue2.clear();
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
 
+	}
+	
+	@FXML
+	private void lblYahtzeeEvent(MouseEvent event) {
+		hideButtons();
+		System.out.println("I clicked large straight");
+		if (activePlayer == 1) {
+			int showScore = Yahtzee.calYahtzee(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (yahtzeePlayer1.getText().isBlank()) {
+				yahtzeePlayer1.setText(Integer.toString(showScore));
+			}
+			GetTheDiceValue.myDiceValue.clear();
+		}
+		if (activePlayer == 2) {
+			int showScore2 = LargeStraight.largeStraight(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (yahtzeePlayer2.getText().isBlank()) {
+				yahtzeePlayer2.setText(Integer.toString(showScore2));
+			}
+			GetTheDiceValue.myDiceValue2.clear();
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
+	}
+	
+	@FXML
+	private void lblChanceEvent(MouseEvent event) {
+		hideButtons();
+		System.out.println("I clicked Chance");
+		if (activePlayer == 1) {
+			int showScore = Chance.AddUpChance(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (chancePlayer1.getText().isBlank()) {
+				chancePlayer1.setText(Integer.toString(showScore));
+			}
+			GetTheDiceValue.myDiceValue.clear();
+		}
+		if (activePlayer == 2) {
+			int showScore2 = Chance.AddUpChance(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			if (chancePlayer2.getText().isBlank()) {
+				chancePlayer2.setText(Integer.toString(showScore2));
+			}
+			GetTheDiceValue.myDiceValue2.clear();
+		}
+		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
+				spinBtn);
+
+	}
+		
 	@FXML
 	private ArrayList<ImageView> updateDie() {
 		ArrayList<ImageView> list = imgviewList;

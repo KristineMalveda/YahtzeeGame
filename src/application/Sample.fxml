@@ -137,17 +137,17 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblSMStraight" layoutX="258.0" layoutY="146.0" onMouseClicked="#lblAcesEvent" text="SM STRAIGHT OF 4" textFill="#4f0606">
+            <Label fx:id="lblSMStraight" layoutX="258.0" layoutY="146.0" onMouseClicked="#lblSMStraightEvent" text="SM STRAIGHT OF 4" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblLGStraight" layoutX="258.0" layoutY="174.0" onMouseClicked="#lblAcesEvent" text="LG STRAIGHT OF 5" textFill="#4f0606">
+            <Label fx:id="lblLGStraight" layoutX="258.0" layoutY="174.0" onMouseClicked="#lblLGStraightEvent" text="LG STRAIGHT OF 5" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblYahtzee" layoutX="258.0" layoutY="206.0" onMouseClicked="#lblAcesEvent" text="YAHTZEE" textFill="#4f0606">
+            <Label fx:id="lblYahtzee" layoutX="258.0" layoutY="206.0" onMouseClicked="#lblYahtzeeEvent" text="YAHTZEE" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -157,7 +157,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblChance" layoutX="259.0" layoutY="259.0" onMouseClicked="#lblAcesEvent" text="CHANCE" textFill="#4f0606">
+            <Label fx:id="lblChance" layoutX="259.0" layoutY="259.0" onMouseClicked="#lblChanceEvent" text="CHANCE" textFill="#4f0606">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
