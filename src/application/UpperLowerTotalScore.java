@@ -8,17 +8,22 @@ public class UpperLowerTotalScore {
 	public static int player2TotalScore;
 	public static int player1TotalLowerScore;
 	public static int player2TotalLowerScore;
-	public static TextField fieldPlayer1, fieldPlayer2, bonusfield1, bonusfield2;
+	public static TextField fieldPlayer1, fieldPlayer2, bonusfield1, bonusfield2, player1Total, player2Total;
 
-	public static void updatePlayer1Score(TextField player1Total, TextField lowerTotalPLayer1) {
+	public static void updatePlayer1Score() {
 		player1TotalScore = GetTheScores.totalScoresPlayer1();
-		player1Total.setText(Integer.toString(player1TotalScore));
+		Scores.setUpdatedScore1(player1TotalScore);
+		player1Total = Textfield.getPlayer1Total();
+		player1Total.setText(Integer.toString(Scores.getUpdatedScore1()));
 		updatePlayer1LowerSectionScore();
+		
 	}
 
-	public static void updatePlayer2Score(TextField player2Total, TextField lowerTotalPlayer2) {
+	public static void updatePlayer2Score() {
 		player2TotalScore = GetTheScores.totalScoresPlayer2();
-		player2Total.setText(Integer.toString(player2TotalScore));
+		Scores.setUpdatedScore2(player2TotalScore);
+		player2Total = Textfield.getPlayer2Total();
+		player2Total.setText(Integer.toString(Scores.getUpdatedScore2()));
 		updatePlayer2LowerSectionScore();
 
 	}
@@ -27,34 +32,35 @@ public class UpperLowerTotalScore {
 		fieldPlayer1 = Textfield.getTextfieldLowerPLayer1();
 		player1TotalLowerScore = GetTheScores.totalScoresPlayer1LowerSec();
 		player1TotalLowerScore += player1TotalScore;
-		fieldPlayer1.setText(Integer.toString(player1TotalLowerScore));
-		checkBonus1(player1TotalLowerScore);
+		Scores.setUpdatedScore1Lower(player1TotalLowerScore);
+		fieldPlayer1.setText(Integer.toString(Scores.getUpdatedScore1Lower()));
+		checkBonus1();
 	}
 
 	public static void updatePlayer2LowerSectionScore() {
 		fieldPlayer2 = Textfield.getTextfieldLowerPLayer2();
 		player2TotalLowerScore = GetTheScores.totalScoresPlayer2LowerSec();
 		player2TotalLowerScore += player2TotalScore;
-		fieldPlayer2.setText(Integer.toString(player2TotalLowerScore));
-		checkBonus2(player2TotalLowerScore);
+		Scores.setUpdatedScore2Lower(player2TotalLowerScore);
+		fieldPlayer2.setText(Integer.toString(Scores.getUpdatedScore2Lower()));
+		checkBonus2();
 	}
 
-	private static void checkBonus1(int player1TotalLowerScore) {
+	private static void checkBonus1() {
 		bonusfield1 = Textfield.getBonusTFPLayer1();
 		int bonus = 35;
-		if (player1TotalLowerScore >= 63) {
+		if (Scores.getUpdatedScore1Lower() >= 63) {
 			bonusfield1.setText(Integer.toString(bonus));
-			GetTheScores.addOnArrayListPlayer1LowerSec(bonus);
+			System.out.println(player1TotalLowerScore);
 		}
 
 	}
 
-	private static void checkBonus2(int player2TotalLowerScore) {
+	private static void checkBonus2() {
 		bonusfield2 = Textfield.getBonusTFPLayer2();
 		int bonus = 35;
-		if (player2TotalLowerScore >= 63) {		
+		if (Scores.getUpdatedScore2Lower() >= 63) {
 			bonusfield2.setText(Integer.toString(bonus));
-			GetTheScores.addOnArrayListPlayer2LowerSec(bonus);
 		}
 
 	}

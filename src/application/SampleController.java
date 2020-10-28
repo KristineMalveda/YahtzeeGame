@@ -59,14 +59,12 @@ public class SampleController {
 		Textfield.setTextfieldLowerPLayer2(lowerTotalPlayer2);
 		Textfield.setBonusTFPLayer1(bonusPlayer1);
 		Textfield.setBonusTFPLayer2(bonusPlayer2);
+		Textfield.setPlayer1Total(player1Total);
+		Textfield.setPlayer2Total(player2Total);
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
 	}
 
-	
-	
-	
-	
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
 		myButtons = myButtons();
@@ -139,7 +137,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (acesPlayer1.getText().isBlank()) {
 				acesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -153,7 +151,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (acesPlayer2.getText().isBlank()) {
 				acesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 
@@ -175,7 +173,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (twosPlayer1.getText().isBlank()) {
 				twosPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -188,7 +186,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (twosPlayer2.getText().isBlank()) {
 				twosPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -209,7 +207,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (threesPlayer1.getText().isBlank()) {
 				threesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -222,7 +220,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (threesPlayer2.getText().isBlank()) {
 				threesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -242,7 +240,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (foursPlayer1.getText().isBlank()) {
 				foursPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -255,7 +253,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (foursPlayer2.getText().isBlank()) {
 				foursPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -276,7 +274,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (fivesPlayer1.getText().isBlank()) {
 				fivesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -290,7 +288,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (fivesPlayer2.getText().isBlank()) {
 				fivesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -311,7 +309,7 @@ public class SampleController {
 			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (sixesPlayer1.getText().isBlank()) {
 				sixesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1Score();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -325,7 +323,7 @@ public class SampleController {
 			if (sixesPlayer2.getText().isBlank()) {
 				sixesPlayer2.setText(Integer.toString(showScore2));
 
-				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2Score();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
