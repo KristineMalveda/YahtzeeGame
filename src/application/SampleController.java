@@ -35,12 +35,12 @@ public class SampleController {
 
 	private Image gifs[] = new Image[6];
 	{
-		gifs[0] = new Image(this.getClass().getResource("/dice/die1.gif").toExternalForm());
-		gifs[1] = new Image(this.getClass().getResource("/dice/die2.gif").toExternalForm());
-		gifs[2] = new Image(this.getClass().getResource("/dice/die3.gif").toExternalForm());
-		gifs[3] = new Image(this.getClass().getResource("/dice/die4.gif").toExternalForm());
-		gifs[4] = new Image(this.getClass().getResource("/dice/die5.gif").toExternalForm());
-		gifs[5] = new Image(this.getClass().getResource("/dice/die6.gif").toExternalForm());
+		gifs[0] = new Image(this.getClass().getResource("/dice/one.png").toExternalForm());
+		gifs[1] = new Image(this.getClass().getResource("/dice/two.png").toExternalForm());
+		gifs[2] = new Image(this.getClass().getResource("/dice/three.png").toExternalForm());
+		gifs[3] = new Image(this.getClass().getResource("/dice/four.png").toExternalForm());
+		gifs[4] = new Image(this.getClass().getResource("/dice/five.png").toExternalForm());
+		gifs[5] = new Image(this.getClass().getResource("/dice/six.png").toExternalForm());
 	}
 
 	private ArrayList<ImageView> imgviewList = new ArrayList<>();
@@ -55,10 +55,18 @@ public class SampleController {
 	@FXML
 	public void initialize() {
 		hideButtons();
+		Textfield.setTextfieldLowerPLayer1(lowerTotalPLayer1);
+		Textfield.setTextfieldLowerPLayer2(lowerTotalPlayer2);
+		Textfield.setBonusTFPLayer1(bonusPlayer1);
+		Textfield.setBonusTFPLayer2(bonusPlayer2);
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
 	}
 
+	
+	
+	
+	
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
 		myButtons = myButtons();
@@ -91,7 +99,7 @@ public class SampleController {
 		myButtons = myButtons();
 		myButtons.get(2).setDisable(true);
 		Node node = myButtons.get(2).getGraphic();
-		ImageView img = (ImageView) node;
+		ImageView img = (ImageView)node;
 		Image btnImage = img.getImage();
 		GetTheDiceValue.getDiceValue(btnImage, gifs, activePlayer);
 	}
@@ -121,62 +129,66 @@ public class SampleController {
 
 	@FXML
 	private void lblAcesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue2);
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (acesPlayer1.getText().isBlank()) {
 				acesPlayer1.setText(Integer.toString(showScore));
-
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
-			
 			GetTheDiceValue.myDiceValue.clear();
 		}
 
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Aces(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (acesPlayer2.getText().isBlank()) {
 				acesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
-		
+
 		}
-		
+
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
 	}
 
 	@FXML
 	private void lblTwosEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue2);
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (twosPlayer1.getText().isBlank()) {
 				twosPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Twos(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (twosPlayer2.getText().isBlank()) {
 				twosPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -187,59 +199,63 @@ public class SampleController {
 
 	@FXML
 	private void lblThreesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue2);
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (threesPlayer1.getText().isBlank()) {
 				threesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Threes(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (threesPlayer2.getText().isBlank()) {
 				threesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
-
 	}
 
 	@FXML
 	private void lblFoursEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue2);
-
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (foursPlayer1.getText().isBlank()) {
 				foursPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Fours(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (foursPlayer2.getText().isBlank()) {
 				foursPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -250,28 +266,31 @@ public class SampleController {
 
 	@FXML
 	private void lblFivesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue2);
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (fivesPlayer1.getText().isBlank()) {
 				fivesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);	
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
-		
+
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Fives(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (fivesPlayer2.getText().isBlank()) {
 				fivesPlayer2.setText(Integer.toString(showScore2));
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -282,28 +301,31 @@ public class SampleController {
 
 	@FXML
 	private void lblSixesEvent(MouseEvent event) {
-		int showScore = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue);
-		int showScore2 = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue2);
 		hideButtons();
-		player1Fields = Player1Fields();
-		player2Fields = Player2Fields();
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1(showScore);
 			if (sixesPlayer1.getText().isBlank()) {
 				sixesPlayer1.setText(Integer.toString(showScore));
-				UpperLowerTotalScore.updatePlayer1Score(player1Fields, player1Total);
+				UpperLowerTotalScore.updatePlayer1Score(player1Total, lowerTotalPLayer1);
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = UpperSectionLogic.Sixes(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2(showScore2);
 			if (sixesPlayer2.getText().isBlank()) {
 				sixesPlayer2.setText(Integer.toString(showScore2));
 
-				UpperLowerTotalScore.updatePlayer2Score(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2Score(player2Total, lowerTotalPlayer2);
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -315,26 +337,29 @@ public class SampleController {
 	@FXML
 	private void lblThreeKindEvent(MouseEvent event) {
 		hideButtons();
-		int showScore = Kind.treOfAKind(GetTheDiceValue.myDiceValue);
-		int showScore2 = Kind.treOfAKind(GetTheDiceValue.myDiceValue2);
-		player1LowerFields = Player1LowerFields();
-		player2LowerFields = Player2LowerFields();
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = Kind.treOfAKind(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (threeOfAKindPlayer1.getText().isBlank()) {
 				threeOfAKindPlayer1.setText(Integer.toString(showScore));
-				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1LowerFields,lowerTotalPLayer1);
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = Kind.treOfAKind(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (threeOfAKindPlayer2.getText().isBlank()) {
 				threeOfAKindPlayer2.setText(Integer.toString(showScore2));
-				// UpperLowerTotalScore.updatePlayer2LowerSectionScore(player2LowerFields,lowerTotalPlayer2);
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -346,27 +371,29 @@ public class SampleController {
 	@FXML
 	private void lblFourKindEvent(MouseEvent event) {
 		hideButtons();
-		System.out.println("I clicked for of a kind !");
-		int showScore = Kind.fourOfAKind(GetTheDiceValue.myDiceValue);
-		int showScore2 = Kind.fourOfAKind(GetTheDiceValue.myDiceValue2);
-
-		if (showScore == 0 && showScore2 == 0) {
-			lblWarning.setText("Choose another Category!");
-			return;
-		}
-
 		if (activePlayer == 1) {
+			int showScore = Kind.fourOfAKind(GetTheDiceValue.myDiceValue);
+			if (showScore == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (fourOfAKindPlayer1.getText().isBlank()) {
 				fourOfAKindPlayer1.setText(Integer.toString(showScore));
-				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
-				// player1Total);
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
 		if (activePlayer == 2) {
+			int showScore2 = Kind.fourOfAKind(GetTheDiceValue.myDiceValue2);
+			if (showScore2 == 0) {
+				lblWarning.setText("Choose another Category!");
+				return;
+			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (fourOfAKindPlayer2.getText().isBlank()) {
 				fourOfAKindPlayer2.setText(Integer.toString(showScore2));
-				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -378,17 +405,16 @@ public class SampleController {
 	@FXML
 	private void lblFullHouseEvent(MouseEvent event) {
 		hideButtons();
-
 		if (activePlayer == 1) {
 			int showScore = Fullhouse.fullHouse(GetTheDiceValue.myDiceValue);
 			if (showScore == 0) {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (fullhousePlayer1.getText().isBlank()) {
 				fullhousePlayer1.setText(Integer.toString(showScore));
-				// UpperLowerTotalScore.updatePlayer1LowerSectionScore(player1Fields,
-				// player1Total);
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -398,9 +424,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (fullhousePlayer2.getText().isBlank()) {
 				fullhousePlayer2.setText(Integer.toString(showScore2));
-				// UpperLowerTotalScore.updatePlayer2LowerSection(player2Fields, player2Total);
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -419,9 +446,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
-
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (smStrPlayer1.getText().isBlank()) {
 				smStrPlayer1.setText(Integer.toString(showScore));
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -431,15 +459,17 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (smStrPlayer2.getText().isBlank()) {
 				smStrPlayer2.setText(Integer.toString(showScore2));
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
-
 	}
+
 	@FXML
 	private void lblLGStraightEvent(MouseEvent event) {
 		hideButtons();
@@ -450,8 +480,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (lgStrPlayer1.getText().isBlank()) {
 				lgStrPlayer1.setText(Integer.toString(showScore));
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -461,8 +493,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (lgStrPlayer2.getText().isBlank()) {
 				lgStrPlayer2.setText(Integer.toString(showScore2));
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -470,7 +504,7 @@ public class SampleController {
 				spinBtn);
 
 	}
-	
+
 	@FXML
 	private void lblYahtzeeEvent(MouseEvent event) {
 		hideButtons();
@@ -481,8 +515,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (yahtzeePlayer1.getText().isBlank()) {
 				yahtzeePlayer1.setText(Integer.toString(showScore));
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -492,16 +528,17 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (yahtzeePlayer2.getText().isBlank()) {
 				yahtzeePlayer2.setText(Integer.toString(showScore2));
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
 		activePlayer = SpinTheDice.changePlayer(activePlayer, lblPlayer1, lblPlayer2, myButtons, lblWarning, gifs,
 				spinBtn);
-
 	}
-	
+
 	@FXML
 	private void lblChanceEvent(MouseEvent event) {
 		hideButtons();
@@ -512,8 +549,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer1LowerSec(showScore);
 			if (chancePlayer1.getText().isBlank()) {
 				chancePlayer1.setText(Integer.toString(showScore));
+				UpperLowerTotalScore.updatePlayer1LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue.clear();
 		}
@@ -523,8 +562,10 @@ public class SampleController {
 				lblWarning.setText("Choose another Category!");
 				return;
 			}
+			GetTheScores.addOnArrayListPlayer2LowerSec(showScore2);
 			if (chancePlayer2.getText().isBlank()) {
 				chancePlayer2.setText(Integer.toString(showScore2));
+				UpperLowerTotalScore.updatePlayer2LowerSectionScore();
 			}
 			GetTheDiceValue.myDiceValue2.clear();
 		}
@@ -532,7 +573,7 @@ public class SampleController {
 				spinBtn);
 
 	}
-		
+
 	@FXML
 	private ArrayList<ImageView> updateDie() {
 		ArrayList<ImageView> list = imgviewList;

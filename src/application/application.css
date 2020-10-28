@@ -1,0 +1,72 @@
+#rollBtn{
+     -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    
+}
+#rollBtn:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+#rollBtn:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+
+}
+
+#rollBtn Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+#diceBtn {
+	-fx-background-color: #d6ecf3;
+	
+}
+#diceBtn:focused {
+	-fx-border-color: white, white;
+    -fx-border-width: 1.0, 1.0;
+    -fx-border-style: solid, segments(1.0, 1.0);
+    -fx-border-radius: 0.0, 0.0;
+    -fx-border-insets: 1.0 1.0 1.0 1.0, 0.0;
+}
+#diceBtn:disabled, #diceBtn:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+#diceBtn:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+#bgLowerPane {
+	 -fx-background-image: url('file:/C:/Users/Kristine/Desktop/advanced-java/YahtzeeGame/src/images/background.png');
+	 -fx-background-size: 100.0% 100.0%;  
+	 -fx-background-position: center;
+}
+#categoryLabel {
+	-fx-text-fill: #000000;
+	-fx-background-color: #d6ecf3;
+}
+#categoryLabel:hover {
+	-fx-background-color: linear-gradient(red,orange,yellow,green,blue,indigo,violet);
+}
+
+.dicePane {	
+	 -fx-background-image: url('file:/C:/Users/Kristine/Desktop/advanced-java/YahtzeeGame/src/images/sky.jpg');
+	  -fx-background-size: 100.0% 100.0%;  
+	 -fx-background-position: center;
+}

@@ -45,7 +45,7 @@ public class Kind {
 				if (dices.get(j) == i)
 					Count++;
 
-				if (Count > 3)
+				if (Count == 4)
 					FourOfAKind = true;
 			}
 		}
