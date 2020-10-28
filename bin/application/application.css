@@ -58,13 +58,21 @@
 	 -fx-background-position: center;
 }
 #categoryLabel {
-	-fx-text-fill: #000000;
-	-fx-background-color: #d6ecf3;
+	-fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 #categoryLabel:hover {
-	-fx-background-color: linear-gradient(red,orange,yellow,green,blue,indigo,violet);
+	-fx-background-color: linear-gradient(#2A5058, #61a2b1);	
 }
-
+.total {
+	-fx-background-color: green;
+	-fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+}
 .dicePane {	
 	 -fx-background-image: url('file:/C:/Users/Kristine/Desktop/advanced-java/YahtzeeGame/src/images/sky.jpg');
 	  -fx-background-size: 100.0% 100.0%;  

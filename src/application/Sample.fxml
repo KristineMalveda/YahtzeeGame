@@ -14,14 +14,19 @@
    <top>
       <Pane prefHeight="187.0" prefWidth="600.0" styleClass="dicePane" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button id="diceBtn" fx:id="btnDie1" layoutX="87.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice1ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
-            <Button id="diceBtn" fx:id="btnDie2" layoutX="190.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice2ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
-            <Button id="diceBtn" fx:id="btnDie3" layoutX="280.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice3ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
-            <Button id="diceBtn" fx:id="btnDie4" layoutX="382.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice4ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
-            <Button id="diceBtn" fx:id="btnDie5" layoutX="484.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice5ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
-            <ImageView fitHeight="76.0" fitWidth="143.0" layoutX="229.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <Button id="diceBtn" fx:id="btnDie1" layoutX="85.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice1ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
+            <Button id="diceBtn" fx:id="btnDie2" layoutX="175.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice2ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
+            <Button id="diceBtn" fx:id="btnDie3" layoutX="260.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice3ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
+            <Button id="diceBtn" fx:id="btnDie4" layoutX="352.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice4ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
+            <Button id="diceBtn" fx:id="btnDie5" layoutX="445.0" layoutY="111.0" mnemonicParsing="false" onAction="#dice5ButtonEvent" prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" />
+            <ImageView fitHeight="84.0" fitWidth="262.0" layoutX="209.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/YatzyLogo.png" />
+                  <Image url="@../../YatzyLogo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="54.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../diceanimation.gif" />
                </image>
             </ImageView>
         
@@ -33,7 +38,7 @@
    <center>
       <Pane id="bgLowerPane" prefHeight="390.0" prefWidth="558.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
-            <Label id="categoryLabel" fx:id="lblAces" layoutX="73.0" layoutY="151.0" lineSpacing="2.0" onMouseClicked="#lblAcesEvent" stylesheets="@application.css" text="ACES" textFill="#fefcfc">
+            <Label id="categoryLabel" fx:id="lblAces" layoutX="74.0" layoutY="152.0" lineSpacing="2.0" onMouseClicked="#lblAcesEvent" stylesheets="@application.css" text="ACES" textFill="#fefcfc">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -48,7 +53,7 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblThrees" layoutX="65.0" layoutY="216.0" lineSpacing="2.0" onMouseClicked="#lblThreesEvent" stylesheets="@application.css" text="THREES" textFill="#f0eeee">
+            <Label id="categoryLabel" fx:id="lblThrees" layoutX="65.0" layoutY="217.0" lineSpacing="2.0" onMouseClicked="#lblThreesEvent" stylesheets="@application.css" text="THREES" textFill="#f0eeee">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -63,12 +68,12 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="65.0" layoutY="381.0" lineSpacing="4.0" text="TOTAL ">
+            <Label layoutX="65.0" layoutY="381.0" lineSpacing="4.0" styleClass="total" stylesheets="@application.css" text="TOTAL ">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="67.0" layoutY="350.0" lineSpacing="2.0" text="BONUS">
+            <Label id="categoryLabel" layoutX="67.0" layoutY="350.0" lineSpacing="2.0" stylesheets="@application.css" text="BONUS">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -78,9 +83,9 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="acesPlayer1" editable="false" layoutX="114.0" layoutY="147.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="acesPlayer1" editable="false" layoutX="115.0" layoutY="147.0" prefHeight="25.0" prefWidth="47.0" />
             <TextField fx:id="acesPlayer2" editable="false" layoutX="173.0" layoutY="147.0" prefHeight="25.0" prefWidth="47.0" />
-            <TextField fx:id="twosPlayer1" editable="false" layoutX="115.0" layoutY="179.0" prefHeight="25.0" prefWidth="47.0" />
+            <TextField fx:id="twosPlayer1" editable="false" layoutX="115.0" layoutY="182.0" prefHeight="25.0" prefWidth="47.0" />
             <TextField fx:id="twosPlayer2" editable="false" layoutX="173.0" layoutY="179.0" prefHeight="25.0" prefWidth="47.0" />
             <TextField fx:id="threesPlayer1" editable="false" layoutX="115.0" layoutY="212.0" prefHeight="25.0" prefWidth="47.0" />
             <TextField fx:id="threesPlayer2" editable="false" layoutX="173.0" layoutY="212.0" prefHeight="25.0" prefWidth="47.0" />
@@ -99,32 +104,32 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lbl3OfAKind" layoutX="338.0" layoutY="151.0" lineSpacing="2.0" onMouseClicked="#lblThreeKindEvent" stylesheets="@application.css" text="3 OF A KIND" textFill="WHITE">
+            <Label id="categoryLabel" fx:id="lbl3OfAKind" layoutX="353.0" layoutY="152.0" lineSpacing="2.0" onMouseClicked="#lblThreeKindEvent" stylesheets="@application.css" text="3 OF A KIND" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lbl4OfAKind" layoutX="338.0" layoutY="187.0" lineSpacing="2.0" onMouseClicked="#lblFourKindEvent" stylesheets="@application.css" text="4 OF A KIND" textFill="#f9f6f6">
+            <Label id="categoryLabel" fx:id="lbl4OfAKind" layoutX="353.0" layoutY="188.0" lineSpacing="2.0" onMouseClicked="#lblFourKindEvent" stylesheets="@application.css" text="4 OF A KIND" textFill="#f9f6f6">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblFullHouse" layoutX="341.0" layoutY="216.0" lineSpacing="2.0" onMouseClicked="#lblFullHouseEvent" stylesheets="@application.css" text="FULLHOUSE" textFill="#fcf9f9">
+            <Label id="categoryLabel" fx:id="lblFullHouse" layoutX="352.0" layoutY="217.0" lineSpacing="2.0" onMouseClicked="#lblFullHouseEvent" stylesheets="@application.css" text="FULLHOUSE" textFill="#fcf9f9">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblSMStraight" layoutX="300.0" layoutY="249.0" lineSpacing="2.0" onMouseClicked="#lblSMStraightEvent" stylesheets="@application.css" text="SM STRAIGHT OF 4" textFill="WHITE">
+            <Label id="categoryLabel" fx:id="lblSMStraight" layoutX="319.0" layoutY="250.0" lineSpacing="2.0" onMouseClicked="#lblSMStraightEvent" stylesheets="@application.css" text="SM STRAIGHT OF 4" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblLGStraight" layoutX="302.0" layoutY="279.0" lineSpacing="2.0" onMouseClicked="#lblLGStraightEvent" stylesheets="@application.css" text="LG STRAIGHT OF 5" textFill="WHITE">
+            <Label id="categoryLabel" fx:id="lblLGStraight" layoutX="319.0" layoutY="279.0" lineSpacing="2.0" onMouseClicked="#lblLGStraightEvent" stylesheets="@application.css" text="LG STRAIGHT OF 5" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblYahtzee" layoutX="337.0" layoutY="304.0" lineSpacing="2.0" onMouseClicked="#lblYahtzeeEvent" stylesheets="@application.css" text="YAHTZEE" textFill="WHITE">
+            <Label id="categoryLabel" fx:id="lblYahtzee" layoutX="351.0" layoutY="304.0" lineSpacing="2.0" onMouseClicked="#lblYahtzeeEvent" stylesheets="@application.css" text="YAHTZEE" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -134,12 +139,12 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label id="categoryLabel" fx:id="lblChance" layoutX="363.0" layoutY="350.0" lineSpacing="2.0" onMouseClicked="#lblChanceEvent" stylesheets="@application.css" text="CHANCE" textFill="WHITE">
+            <Label id="categoryLabel" fx:id="lblChance" layoutX="365.0" layoutY="351.0" lineSpacing="2.0" onMouseClicked="#lblChanceEvent" stylesheets="@application.css" text="CHANCE" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblAces12111111" layoutX="365.0" layoutY="380.0" lineSpacing="2.0" onMouseClicked="#lblAcesEvent" text="TOTAL">
+            <Label fx:id="lblAces12111111" layoutX="365.0" layoutY="380.0" lineSpacing="2.0" onMouseClicked="#lblAcesEvent" styleClass="total" stylesheets="@application.css" text="TOTAL">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -164,7 +169,7 @@
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font></Label>
-            <Label id="lblPlayer2" fx:id="lblPlayer2" layoutX="440.0" layoutY="57.0" text="Player 2" textFill="#a49c06">
+            <Label id="lblPlayer2" fx:id="lblPlayer2" layoutX="440.0" layoutY="57.0" text="Player 2" textFill="#0d4214">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font></Label>
